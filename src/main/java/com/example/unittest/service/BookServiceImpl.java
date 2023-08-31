@@ -1,23 +1,31 @@
 package com.example.unittest.service;
 
 import com.example.unittest.dto.Book;
-import com.example.unittest.service.BookService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BookServiceImpl implements BookService {
     @Override
     public Book getBook(Long id) {
-        return null;
+        Book mockBook = new Book();
+        mockBook.setId(1L);
+        mockBook.setTitle("title");
+        mockBook.setAuthor("author");
+        return mockBook;
     }
 
     @Override
     public Book saveBook(Book book) {
-        return null;
+        Book mockBook = new Book();
+        mockBook.setId(1L);
+        mockBook.setTitle("title");
+        mockBook.setAuthor("author");
+        return mockBook;
     }
 
     @Override
     public boolean deleleBook(Long id) {
-        return true;
+        if(id == 1L) return true;
+        else return false;
     }
 }

@@ -15,7 +15,7 @@ public class BookController {
     @Autowired
     BookServiceImpl bookService;
 
-    @GetMapping("/:id")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getBook(@PathVariable("id") Long id){
         Book book = bookService.getBook(id);
         return ResponseEntity.ok(book);
@@ -24,15 +24,15 @@ public class BookController {
     @PostMapping("/save")
     public ResponseEntity<?> saveBook(@RequestBody Book book){
         Message message = new Message();
-        if(book == null){
+        if(book.getId() == null){
             message.setMessage("Request Body : book null");
-            ResponseEntity.badRequest().body(message);
+            return ResponseEntity.badRequest().body(message);
         }
         Book responseBook = bookService.saveBook(book);
         return ResponseEntity.ok(responseBook);
     }
     
-    @DeleteMapping("/:id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable("id") Long id){
         Message message = new Message();
         if(bookService.deleleBook(id)) {
